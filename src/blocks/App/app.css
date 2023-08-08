@@ -1,0 +1,10 @@
+.App {
+    background-color: #202020;
+    max-width: 100vw;
+  }
+  
+  @media (max-width: 768px) {
+    .App {
+      max-width: 768px;
+    }
+  }

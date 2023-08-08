@@ -1,0 +1,153 @@
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+}
+
+.nav__links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav__link {
+    color: #FFF;
+    text-align: right;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    /* 128.571% */
+    text-decoration: none;
+}
+
+.nav__profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+.nav__account {
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    /* 92.308% */
+}
+
+.nav__profile-icon {
+    background-image: url(../../images/icon__COLOR_icon-main.svg);
+    background-color: #313131;
+    height: 26px;
+    width: 26px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50px;
+}
+
+.nav__btn {
+    display: none;
+    border: none;
+    background-color: #202020;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 44px;
+    height: 38px;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 786px) {
+    .nav__btn {
+        display: block;
+        background-image: url(../../images/nav-btn.svg);
+    }
+
+    .nav__btn_active {
+        z-index: 3;
+        background-image: url(../../images/nav-btn-active.svg);
+        width: 16px;
+        height: 38px;
+    }
+
+    .nav_hiden {
+        display: none;
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        flex-direction: column;
+        height: 100vh;
+        width: 68vw;
+        background: #202020;
+        justify-content: space-between;
+    }
+
+    .nav__links {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 159px 90px;
+        gap: 22px;
+    }
+
+    .nav__link {
+        border-bottom: 2px solid #ffffff00;
+        color: #FFF;
+        text-align: center;
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-family: Inter, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        padding-bottom: 4px;
+        box-sizing: border-box;
+    }
+
+    .nav__link:hover {
+        border-bottom: 2px solid #FFF;
+    }
+
+    .nav__profile {
+        padding-bottom: 90px;
+    }
+}
+
+@media (max-width: 470px) {
+    .nav__btn {
+        width: 40px;
+        height: 39px;
+        background-size: contain;
+    }
+
+    .nav {
+        width: 100vw;
+    }
+
+    .nav__links {
+        padding: 145px 60px;
+        gap: 17px;
+    }
+
+    .nav__link {
+        padding-bottom: 5px;
+    }
+
+    .nav__profile {
+        padding-bottom: 46px;
+    }
+
+    .nav__btn_active {
+        width: 30px;
+        height: 23px;
+        background-size: cover;
+    }
+}

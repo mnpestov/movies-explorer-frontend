@@ -1,0 +1,135 @@
+.profile {
+  background: #202020;
+  min-height: calc(100vh - 74px);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content 1fr;
+  align-items: flex-end;
+}
+
+.profile__title {
+  font-family: Inter, sans-serif;
+  margin: 0;
+  margin-bottom: 108px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.profile__container {
+  width: 100%;
+  max-width: 410px;
+  box-sizing: border-box;
+  margin: auto;
+  padding-top: 70px;
+}
+
+.profile__btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 313px;
+}
+
+.profile__btn {
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+
+  background: none;
+
+  cursor: pointer, sans-serif;
+
+  transition: opacity 0.5s ease;
+}
+
+.profile__btn:hover {
+  opacity: 0.7;
+}
+
+.profile__btn_color_red {
+  color: #ee3465;
+}
+
+.profile__line {
+  padding: 16px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid #424242;
+
+}
+
+.profile__line:last-child {
+  border: none;
+}
+
+.profile__label {
+  margin: 0;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  color: #FFFFFF;
+}
+
+.profile__info {
+  margin: 0;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: right;
+  color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .profile__container {
+    padding-top: 233px;
+  }
+
+  .profile__title {
+    margin-bottom: 81px;
+  }
+
+  .profile__btns {
+    padding-bottom: 187px;
+  }
+}
+
+@media (max-width: 470px) {
+  .profile__container {
+    padding: 67px 30px 0;
+  }
+
+  .profile__title {
+    margin-bottom: 65px;
+  }
+
+  .profile__btns {
+    padding-bottom: 202px;
+  }
+
+  .profile__btn {
+    font-size: 12px;
+  }
+}
