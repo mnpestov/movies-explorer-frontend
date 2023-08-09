@@ -71,7 +71,7 @@ function MoviesCardList() {
                             ? (<button type="button" className='card__save'>Сохранить</button>)
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
-                    {/* <li className='card'>
+                    <li className='card'>
                         <img className='card__picture' src={picture6} alt="movie1"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Name</h2>
@@ -140,7 +140,7 @@ function MoviesCardList() {
                         {location.pathname === '/movies'
                             ? (<button type="button" className='card__save'>Сохранить</button>)
                             : (<button type="button" className='card__save card__delete' ></button>)}
-                    </li> */}
+                    </li>
                 </ul>
                 {/* <MoviesCard /> */}
                 {location.pathname === '/movies'
