@@ -13,7 +13,7 @@ function AboutMe() {
                     <p className="student__profession">Фронтенд-разработчик, 30 лет</p>
                     <p className="student__about-me">Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
                         и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С&#160;2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
-                    <a className="student__link" href="https://github.com/mnpestov">Github</a>
+                    <a className="student__link" href="https://github.com/mnpestov" target="_blank" rel="noreferrer">Github</a>
                 </div>
                 <img className="student__photo" src={studentPhoto} alt={"portrait"} />
             </div>

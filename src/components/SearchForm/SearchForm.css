@@ -70,7 +70,7 @@
     border: none;
     border-radius: 48px;
 
-    cursor: pointer, sans-serif;
+    cursor: pointer;
 
     transition: opacity 0.5s ease;
 }
@@ -103,7 +103,7 @@
     width: 36px;
     height: 20px;
 
-    cursor: pointer, sans-serif;
+    cursor: pointer;
 }
 
 .search__switch input {

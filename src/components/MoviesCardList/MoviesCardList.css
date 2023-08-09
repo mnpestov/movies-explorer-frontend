@@ -1,6 +1,12 @@
 .movies-list {
     padding-top: 80px;
     margin-bottom: 42px;
+    max-width: 1280px;
+    margin: auto;
+}
+
+.movies-list__saved-movies {
+    margin-bottom: 180px;
 }
 
 .movies-list__container {
@@ -25,6 +31,7 @@
 
 .card__picture {
     max-width: 100%;
+    cursor: pointer;
 }
 
 .cadr__description {
@@ -77,12 +84,13 @@
     height: 36px;
     border: none;
     margin: 54px 0 0;
+    cursor: pointer;
 }
 
 .card__save {
     padding: 6px 7px;
     margin: 0;
-    cursor: pointer, sans-serif;
+    cursor: pointer;
     border-radius: 30px;
     background: #313131;
     color: #FFF;
@@ -130,6 +138,12 @@
     .movies-list {
         padding: 81px 30px 9px;
         margin-bottom: 0;
+        max-width: 768px;
+        margin: auto;
+    }
+
+    .movies-list__saved-movies {
+        padding-bottom: 105px;
     }
 
     .movies-list__container {
@@ -169,6 +183,12 @@
 @media (max-width: 470px) {
     .movies-list {
         padding: 50px 9px 100px;
+        max-width: 320px;
+        margin: auto;
+    }
+
+    .movies-list__saved-movies {
+        padding-bottom: 170px;
     }
 
     .cards {

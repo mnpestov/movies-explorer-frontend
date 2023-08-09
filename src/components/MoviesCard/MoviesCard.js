@@ -10,7 +10,7 @@ function MoviesCard() {
             <div className="movies-list__container">
                 <ul className='cards'>
                     <li className='card'>
-                        <img src={picture1} alt="movie1"></img>
+                        <img className='card__picture'src={picture1} alt="movie1"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Киноальманах «100 лет дизайна»</h2>
                             <p className='cadr__duration'>1ч 17м</p>

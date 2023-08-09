@@ -18,7 +18,7 @@ function MoviesCardList() {
     const location = useLocation();
     const isSaved = true;
     return (
-        <section className="movies-list">
+        <section className={`${location.pathname === '/saved-movies' ? "movies-list__saved-movies" : ""} movies-list`}>  
             <div className="movies-list__container">
                 <ul className='cards'>
                     <li className='card'>
@@ -143,7 +143,10 @@ function MoviesCardList() {
                     </li> */}
                 </ul>
                 {/* <MoviesCard /> */}
-                <button type="button" className='movies-list__btn'>Ещё</button>
+                {location.pathname === '/movies'
+                            ? (<button type="button" className='movies-list__btn'>Ещё</button>)
+                            : null}
+                {/* <button type="button" className='movies-list__btn'>Ещё</button> */}
             </div>
         </section>
     );

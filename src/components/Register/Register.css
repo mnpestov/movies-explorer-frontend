@@ -21,7 +21,7 @@
 
 .register__title {
     color: #FFF;
-    font-family: Inter, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
@@ -61,9 +61,23 @@
     color: #FFFFFF;
 }
 
+.register__text {
+    color: #8B8B8B;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    margin: 0;
+    margin-top: 16px;
+}
+
 .register__link {
     margin: 0;
-
+    margin-left: 3px;
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -90,16 +104,14 @@
     border: none;
     border-radius: 3px;
 
-    cursor: pointer, sans-serif;
-
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
     text-align: center;
     color: #FFFFFF;
-
-    cursor: pointer, sans-serif;
 
     transition: opacity 0.5s ease;
 }
@@ -112,20 +124,6 @@
     cursor: auto;
     opacity: 1;
     background-color: gainsboro;
-}
-
-.register__text {
-    width: 100%;
-
-    margin: 0;
-    margin-top: 16px;
-
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 17px;
-    text-align: center;
-    color: #8B8B8B;
 }
 
 .register__error {
@@ -145,7 +143,7 @@
     }
 
     .register__container {
-        margin-top: 84px;
+        margin-top: 142px;
     }
 }
 
@@ -175,7 +173,7 @@
         margin-top: 221px;
         color: #FFF;
         text-align: center;
-        font-family: Inter, sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 12px;
         font-style: normal;
         font-weight: 500;
@@ -185,21 +183,22 @@
     .register__text {
         color: #8B8B8B;
         text-align: center;
-        font-family: Inter, sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 12px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        margin-top: 15px;
+        margin-top: 13px;
     }
 
     .register__link {
         color: #4285F4;
-        text-align: center;
-        font-family: Inter, sans-serif;
         font-size: 12px;
+        /* text-align: center;
+        font-family: Inter, sans-serif;
+        
         font-style: normal;
         font-weight: 400;
-        line-height: normal;
+        line-height: normal; */
     }
 }
