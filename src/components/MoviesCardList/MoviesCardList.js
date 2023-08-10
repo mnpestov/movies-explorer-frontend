@@ -22,7 +22,7 @@ function MoviesCardList() {
             <div className="movies-list__container">
                 <ul className='cards'>
                     <li className='card'>
-                        <img className='card__picture' src={picture1} alt="movie1"></img>
+                        <img className='card__picture' src={picture1} alt="33 слова о дизайне"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>33 слова о дизайне</h2>
                             <p className='cadr__duration'>1ч 17м</p>
@@ -32,7 +32,7 @@ function MoviesCardList() {
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
                     <li className='card'>
-                        <img className='card__picture' src={picture2} alt="movie1"></img>
+                        <img className='card__picture' src={picture2} alt="Киноальманах «100 лет дизайна»"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Киноальманах «100 лет дизайна»</h2>
                             <p className='cadr__duration'>1ч 17м</p>
@@ -42,7 +42,7 @@ function MoviesCardList() {
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
                     <li className='card'>
-                        <img className='card__picture' src={picture3} alt="movie1"></img>
+                        <img className='card__picture' src={picture3} alt="В погоне за Бенкси"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Name</h2>
                             <p className='cadr__duration'>1ч 17м</p>
@@ -52,7 +52,7 @@ function MoviesCardList() {
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
                     <li className='card'>
-                        <img className='card__picture' src={picture4} alt="movie1"></img>
+                        <img className='card__picture' src={picture4} alt="Баския: Взрыв реальности"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Name</h2>
                             <p className='cadr__duration'>1ч 17м</p>
@@ -62,7 +62,7 @@ function MoviesCardList() {
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
                     <li className='card'>
-                        <img className='card__picture' src={picture5} alt="movie1"></img>
+                        <img className='card__picture' src={picture5} alt="Бег это свобода"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Name</h2>
                             <p className='cadr__duration'>1ч 17м</p>
@@ -72,7 +72,7 @@ function MoviesCardList() {
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
                     <li className='card'>
-                        <img className='card__picture' src={picture6} alt="movie1"></img>
+                        <img className='card__picture' src={picture6} alt="Книготорговцы"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Name</h2>
                             <p className='cadr__duration'>1ч 17м</p>
@@ -82,7 +82,7 @@ function MoviesCardList() {
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
                     <li className='card'>
-                        <img className='card__picture' src={picture7} alt="movie1"></img>
+                        <img className='card__picture' src={picture7} alt="По волнам: Искусство звука в кино"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Name</h2>
                             <p className='cadr__duration'>1ч 17м</p>
@@ -92,7 +92,7 @@ function MoviesCardList() {
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
                     <li className='card'>
-                        <img className='card__picture' src={picture8} alt="movie1"></img>
+                        <img className='card__picture' src={picture8} alt="Когда я думаю о Германии ночью"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Gimme Danger: История Игги и The Stooges</h2>
                             <p className='cadr__duration'>1ч 17м</p>
@@ -102,7 +102,7 @@ function MoviesCardList() {
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
                     <li className='card'>
-                        <img className='card__picture' src={picture9} alt="movie1"></img>
+                        <img className='card__picture' src={picture9} alt="Gimme Danger: История Игги и The Stooges"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Name</h2>
                             <p className='cadr__duration'>1ч 17м</p>
@@ -112,7 +112,7 @@ function MoviesCardList() {
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
                     <li className='card'>
-                        <img className='card__picture' src={picture10} alt="movie1"></img>
+                        <img className='card__picture' src={picture10} alt="Дженис: Маленькая девочка грустит"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Name</h2>
                             <p className='cadr__duration'>1ч 17м</p>
@@ -122,7 +122,7 @@ function MoviesCardList() {
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
                     <li className='card'>
-                        <img className='card__picture' src={picture11} alt="movie1"></img>
+                        <img className='card__picture' src={picture11} alt="Соберись перед прыжком"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Name</h2>
                             <p className='cadr__duration'>1ч 17м</p>
@@ -132,7 +132,7 @@ function MoviesCardList() {
                             : (<button type="button" className='card__save card__delete' ></button>)}
                     </li>
                     <li className='card'>
-                        <img className='card__picture' src={picture12} alt="movie1"></img>
+                        <img className='card__picture' src={picture12} alt="Пи Джей Харви: A dog called money"></img>
                         <div className='cadr__description'>
                             <h2 className='card__name'>Name</h2>
                             <p className='cadr__duration'>1ч 17м</p>
