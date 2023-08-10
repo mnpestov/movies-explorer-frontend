@@ -16,7 +16,7 @@ function Login() {
               <input name="email" type="email" className="login__input" placeholder="Email" required />
               <span className="login__error"></span>
               <label htmlFor="password" className="login__label">Пароль</label>
-              <input name="password" type="password" className="login__input" placeholder="Password" required />
+              <input name="password" type="password" className="login__input" placeholder="Password" minLength={8} required />
               <span className="login__error"></span>
               <button type="submit" className="login__btn">Войти</button>
               <p className="login__text">Ещё не зарегистрированы? <Link to="/signup" className="login__link">Регистрация</Link></p>
