@@ -48,8 +48,6 @@
     text-decoration: none;
 }
 
-.header__logo {}
-
 .header__login {
     gap: 30px;
     display: flex;

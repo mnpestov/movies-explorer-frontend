@@ -13,13 +13,13 @@ function Register() {
                 <h1 className="register__title">Добро пожаловать!</h1>
                 <form className="register__form">
                     <label htmlFor="name" className="register__label">Имя</label>
-                    <input name="name" type="text" className="register__input" required />
+                    <input name="name" type="text" className="register__input" placeholder="Name" required />
                     <span className="register__error"></span>
-                    <label htmlFor="email" className="register__label" >E-mail</label>
-                    <input name="email" type="email" className="register__input" required />
+                    <label htmlFor="email" className="register__label">E-mail</label>
+                    <input name="email" type="email" className="register__input" placeholder="Email" required />
                     <span className="register__error"></span>
                     <label htmlFor="password" className="register__label">Пароль</label>
-                    <input name="password" type="password" className="register__input" required />
+                    <input name="password" type="password" className="register__input" placeholder="Password" required />
                     <span className="register__error">Что-то пошло не так...</span>
                     <button type="submit" className="register__btn" >Зарегистрироваться</button>
                     <p className="register__text">Уже зарегистрированы? <Link to="/signin" className="register__link">Войти</Link></p>

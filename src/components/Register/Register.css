@@ -17,8 +17,6 @@
     flex-direction: column;
 }
 
-.register__logo {}
-
 .register__title {
     color: #FFF;
     font-family: 'Inter', sans-serif;

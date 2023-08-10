@@ -17,8 +17,6 @@
     flex-direction: column;
 }
 
-.login__logo {}
-
 .login__title {
     color: #FFF;
     font-family: 'Inter', sans-serif;
