@@ -131,6 +131,12 @@
     opacity: 0.7;
 }
 
+.login__btn:disabled {
+    cursor: auto;
+    opacity: 1;
+    background-color: gainsboro;
+}
+
 @media (max-width: 768px) {
     .login {
         align-items: center;
