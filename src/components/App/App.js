@@ -22,12 +22,12 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userEmail, setUserEmail] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const cbAuthenticate = useCallback((data) => {
     localStorage.setItem('jwt', data.token);
+    console.log('jwt-token is add to local storege');
     setLoggedIn(true);
   }, [])
 
@@ -42,25 +42,20 @@ function App() {
         throw new Error('invalid user')
       }
       if (user) {
+        console.log('user is finded');
         setLoggedIn(true);
-        setUserEmail(user.email)
       }
     } catch (err) {
       console.log('Ошибка: ' + err)
     }
   }, [])
 
-  function showPopupError(message) {
-    setError(message ?? 'Произошла ошибка');
-    setTimeout(() => setError(null), 5000);
-  }
-
   function handleRegistration(data) {
     AuthApi.register(data)
       .then(() => {
         navigate('/signin')
       })
-      .catch((err) => err.then(({ message }) => showPopupError(message)))
+      .catch((err) => console.log('Ошибка: ' + err))
   }
 
   function handleLogin(data) {
@@ -68,11 +63,18 @@ function App() {
       .then((res) => {
         if (res.token) {
           cbAuthenticate(res)
-          setUserEmail(data.email)
         }
         navigate('/movies');
       })
-      .catch((err) => err.then(({ message }) => showPopupError(message)))
+      .catch((err) => console.log('Ошибка: ' + err))
+  }
+
+  function handleUpdate(user) {
+    MainApi.updateUser(user)
+      .then((res) => {
+        setCurrentUser(res)
+      })
+      .catch((err) => console.log('Ошибка: ' + err))
   }
 
   const cbLogout = useCallback(() => {
@@ -91,8 +93,6 @@ function App() {
       MainApi.getUserInfo()
         .then((user) => {
           setCurrentUser(user);
-          console.log(user);
-          console.log(currentUser);
         })
         .catch(err => console.log('Ошибка', err));
     }
@@ -106,7 +106,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={
             <>
-              <Header />
+              <Header loggedIn={loggedIn} />
               <Main />
               <Footer />
             </>
@@ -128,7 +128,7 @@ function App() {
             <Route path='/profile' element={
               <>
                 <Header loggedIn={loggedIn} />
-                < Profile logOut={cbLogout} />
+                < Profile logOut={cbLogout} onSubmit={handleUpdate} />
               </>
 
             } />

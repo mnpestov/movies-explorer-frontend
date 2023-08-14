@@ -20,6 +20,22 @@ class Api {
         })
             .then(this._checkResponse)
     }
+
+    updateUser(user) {
+        const token = localStorage.getItem('jwt');
+        return fetch(`${this._baseUrl}/users/me`, {
+            method: 'PATCH',
+            headers: {
+                authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: user.name,
+                email: user.email
+            }),
+        })
+            .then(this._checkResponse)
+    }
 }
 
 export const MainApi = new Api({

@@ -5,38 +5,47 @@ import './Profile.css';
 
 
 
-function Profile({logOut}) {
-    const navigate = useNavigate();
+function Profile({ logOut, onSubmit }) {
+  const navigate = useNavigate();
 
-    const currentUser = useContext(CurrentUserContext);
-    const [user, setUser] = useState({});
+  const currentUser = useContext(CurrentUserContext);
+  const [user, setUser] = useState({});
 
-    useEffect(() => {
-      setUser(currentUser);
+  useEffect(() => {
+    setUser(currentUser);
   }, [currentUser]);
 
-    console.log(currentUser.name);
-    console.log(user);
+  function handleChange(e) {
+    const { target: { name, value } } = e;
+    setUser({ ...user, [name]: value });
+  }
 
-    return (
-        <form className="profile">
-          <div className="profile__container">
-            <h1 className="profile__title">{`Привет, ${user.name}!`}</h1>
-            <div className="profile__line">
-              <label className="profile__label">Имя</label>
-              <p className="profile__info">{user.name}</p>
-            </div>
-            <div className="profile__line">
-              <label className="profile__label">E-mail</label>
-             <p className="profile__info">{user.email}</p>
-            </div>
-          </div>
-          <div className="profile__btns">
-                  <button type="button" className="profile__btn">Редактировать</button>
-                  <button type="button" className="profile__btn profile__btn_color_red" onClick={logOut}>Выйти из аккаунта</button>
-          </div>
-        </form >
-      );
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit(user);
+  }
+
+  return (
+    <form className="profile" onSubmit={handleSubmit}>
+      <div className="profile__container">
+        <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
+        <div className="profile__line">
+          <label className="profile__label">Имя</label>
+          <input type="name" name="name" className="profile__input" onChange={handleChange} value={user.name} required />
+          {/* <p className="profile__info">{user.name}</p> */}
+        </div>
+        <div className="profile__line">
+          <label className="profile__label">E-mail</label>
+          <input type="email" name="email" className="profile__input" onChange={handleChange} value={user.email} required />
+          {/* <p className="profile__info">{user.email}</p> */}
+        </div>
+      </div>
+      <div className="profile__btns">
+        <button type="submit" className="profile__btn" onClick={handleSubmit} disabled={!(user.name !== currentUser.name || user.email !== currentUser.email)}>Редактировать</button>
+        <button type="button" className="profile__btn profile__btn_color_red" onClick={logOut}>Выйти из аккаунта</button>
+      </div>
+    </form >
+  );
 }
 
 export default Profile;
