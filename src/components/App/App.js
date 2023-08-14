@@ -12,6 +12,8 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { MainApi } from '../../utils/MainApi';
 import { AuthApi } from '../../utils/ApiAuth';
@@ -73,6 +75,13 @@ function App() {
       .catch((err) => err.then(({ message }) => showPopupError(message)))
   }
 
+  const cbLogout = useCallback(() => {
+    setLoggedIn(false);
+    localStorage.removeItem('jwt');
+    setCurrentUser({});
+    navigate('/');
+  }, [])
+
   useEffect(() => {
     checkToken();
   }, [checkToken, loggedIn])
@@ -101,27 +110,30 @@ function App() {
               <Main />
               <Footer />
             </>
-
           } />
           <Route path='/signup' element={< Register onSubmit={handleRegistration} />} />
           <Route path='/signin' element={< Login onSubmit={handleLogin} />} />
-          <Route path='/movies' element={
-            <>
-              <Header loggedIn={loggedIn} />
-              < Movies />
-            </>} />
-          <Route path='/saved-movies' element={<>
-            <Header loggedIn={loggedIn} />
-            < SavedMovies />
-          </>} />
-          <Route path='/profile' element={
-            <>
-              <Header loggedIn={loggedIn} />
-              < Profile />
-            </>
 
-          } />
-          <Route path='/notfound' element={< NotFound />} />
+          <Route element={<ProtectedRoute loggedIn={loggedIn} />} >
+            <Route path='/movies' element={
+              <>
+                <Header loggedIn={loggedIn} />
+                < Movies />
+              </>} />
+
+            <Route path='/saved-movies' element={<>
+              <Header loggedIn={loggedIn} />
+              < SavedMovies />
+            </>} />
+            <Route path='/profile' element={
+              <>
+                <Header loggedIn={loggedIn} />
+                < Profile logOut={cbLogout} />
+              </>
+
+            } />
+          </Route>
+          <Route path='*' element={< NotFound />} />
         </Routes>
       </div>
     </CurrentUserContext.Provider>

@@ -5,7 +5,7 @@ import './Profile.css';
 
 
 
-function Profile() {
+function Profile({logOut}) {
     const navigate = useNavigate();
 
     const currentUser = useContext(CurrentUserContext);
@@ -33,7 +33,7 @@ function Profile() {
           </div>
           <div className="profile__btns">
                   <button type="button" className="profile__btn">Редактировать</button>
-                  <button type="button" className="profile__btn profile__btn_color_red" onClick={()=>navigate('/')}>Выйти из аккаунта</button>
+                  <button type="button" className="profile__btn profile__btn_color_red" onClick={logOut}>Выйти из аккаунта</button>
           </div>
         </form >
       );
