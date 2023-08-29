@@ -77,5 +77,5 @@ class Api {
 
 export const MainApi = new Api({
     // baseUrl: 'http://localhost:3000',
-    baseUrl: 'api.diplommnpestov.nomoredomains.rocks',
+    baseUrl: 'https://api.diplommnpestov.nomoredomains.rocks',
 });
