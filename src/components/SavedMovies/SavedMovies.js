@@ -5,7 +5,6 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
 import { useEffect, useState } from 'react';
 import { MainApi } from '../../utils/MainApi';
-// import MoviesCard from '../MoviesCard/MoviesCard'
 
 function SavedMovies() {
 
@@ -16,20 +15,6 @@ function SavedMovies() {
     useEffect(() => {
         getSavedMovies();
     }, [])
-
-    // function changeIsShort(params, Films = films) {
-    //   setIsLoading(true)
-    //   setResults(null);
-    //   if (Films) {
-    //     const { isShort = false } = params;
-    //     const data = Films.filter(({ duration }) => {
-    //       if (isShort && duration > 40) return false;
-    //       return true;
-    //     });
-    //     setResults(data)
-    //   }
-    //   setTimeout(() => setIsLoading(false), 500)
-    // }
 
     function changeIsShort(params, movies) {
         setIsLoading(true)
@@ -55,6 +40,7 @@ function SavedMovies() {
                     setIsLoading(false)
                     // setMovies(movies)
                 }
+                setIsLoading(false)
             })
             .catch((err) => {
                 setIsLoading(false)
@@ -107,7 +93,6 @@ function SavedMovies() {
             <SearchForm onSubmit={handleSearch} onChecked={changeIsShort} />
             {isLoading ? (<Preloader />) : null}
             {moviesList && !isLoading ? (<MoviesCardList cards={moviesList} onDelete={deleteMovie} />) : null}
-            {/* <MoviesCard /> */}
             <Footer />
         </>
     );

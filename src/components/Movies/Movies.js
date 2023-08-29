@@ -39,7 +39,6 @@ function Movies() {
                     } else item.isSaved = false;
                     return item;
                 });
-                console.log(moviesOnRender);
                 setMoviesList(moviesOnRender);
             })
             .catch((err) => console.log('Ошибка', err));
