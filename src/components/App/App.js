@@ -22,12 +22,10 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const cbAuthenticate = useCallback((data) => {
     localStorage.setItem('jwt', data.token);
-    console.log('jwt-token is add to local storege');
     setLoggedIn(true);
   }, [])
 
@@ -42,7 +40,6 @@ function App() {
         throw new Error('invalid user')
       }
       if (user) {
-        console.log('user is finded');
         setLoggedIn(true);
       }
     } catch (err) {
@@ -53,7 +50,7 @@ function App() {
   function handleRegistration(data) {
     AuthApi.register(data)
       .then(() => {
-        navigate('/signin')
+        handleLogin(data)
       })
       .catch((err) => console.log('Ошибка: ' + err))
   }
@@ -79,7 +76,7 @@ function App() {
 
   const cbLogout = useCallback(() => {
     setLoggedIn(false);
-    localStorage.removeItem('jwt');
+    localStorage.clear();
     setCurrentUser({});
     navigate('/');
   }, [])

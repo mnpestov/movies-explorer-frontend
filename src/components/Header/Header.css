@@ -17,7 +17,7 @@
     padding: 18px 70px;
     display: flex;
     justify-content: space-between;
-    min-width: 100vw;
+    min-width: 100%;
     box-sizing: border-box;
 }
 
@@ -52,6 +52,12 @@
     gap: 30px;
     display: flex;
     align-items: center;
+}
+
+@media (max-width: 1280px) {
+    .header__container {
+        min-width: 100vW;
+    }
 }
 
 @media (max-width: 1075px) {

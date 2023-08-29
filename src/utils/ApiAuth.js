@@ -44,7 +44,8 @@ class ApiAuth {
 
 export const AuthApi = new ApiAuth(
     {
-        baseUrl: 'http://localhost:3000',
+        // baseUrl: 'http://localhost:3000',
+        baseUrl: 'http://api.diplommnpestov.nomoredomains.rocks',
         headers: {
             'Content-Type': 'application/json'
         }
