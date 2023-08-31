@@ -124,8 +124,6 @@ function Movies() {
                         }
                         return item;
                     })
-                    console.log(moviesList);
-                    console.log(moviesOnRender);
                     setMoviesList(moviesOnRender);
                 }
             })
