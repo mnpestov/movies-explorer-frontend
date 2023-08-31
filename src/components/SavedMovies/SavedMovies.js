@@ -37,7 +37,13 @@ function SavedMovies() {
 
     function deleteMovie(id) {
         MainApi.deleteMovie(id)
-            .then(() => handleSearch(searchRequest))
+            .then(() => {
+                if (searchRequest) {
+                    handleSearch(searchRequest);
+                } else {
+                    getSavedMovies();
+                }
+            })
             .catch((err) => console.log('Ошибка', err));
     }
 

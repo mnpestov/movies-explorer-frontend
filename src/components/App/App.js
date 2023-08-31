@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { useEffect, useState, useCallback } from 'react';
 import Header from '../Header/Header';
 import Register from '../Register/Register';
@@ -38,14 +38,36 @@ function App() {
       const user = await AuthApi.checkToken(jwt);
       if (!user) {
         throw new Error('invalid user')
-      }
-      if (user) {
+      } else {
         setLoggedIn(true);
+        localStorage.setItem('isAuth', loggedIn);
       }
     } catch (err) {
       console.log('Ошибка: ' + err)
     }
   }, [])
+
+  const cbLogout = useCallback(() => {
+    setLoggedIn(false);
+    localStorage.clear();
+    setCurrentUser({});
+    navigate('/');
+  }, [])
+
+  useEffect(() => {
+    checkToken();
+  }, [checkToken, loggedIn])
+
+  useEffect(() => {
+    if (loggedIn) {
+      MainApi.getUserInfo()
+        .then((user) => {
+          setCurrentUser(user);
+        })
+        .catch(err => console.log('Ошибка', err));
+    }
+
+  }, [loggedIn])
 
   function handleRegistration(data) {
     AuthApi.register(data)
@@ -74,28 +96,6 @@ function App() {
       .catch((err) => console.log('Ошибка: ' + err))
   }
 
-  const cbLogout = useCallback(() => {
-    setLoggedIn(false);
-    localStorage.clear();
-    setCurrentUser({});
-    navigate('/');
-  }, [])
-
-  useEffect(() => {
-    checkToken();
-  }, [checkToken, loggedIn])
-
-  useEffect(() => {
-    if (loggedIn) {
-      MainApi.getUserInfo()
-        .then((user) => {
-          setCurrentUser(user);
-        })
-        .catch(err => console.log('Ошибка', err));
-    }
-
-  }, [loggedIn])
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -108,9 +108,8 @@ function App() {
               <Footer />
             </>
           } />
-          <Route path='/signup' element={< Register onSubmit={handleRegistration} />} />
-          <Route path='/signin' element={< Login onSubmit={handleLogin} />} />
-
+          <Route path='/signup' element={!loggedIn ? (< Register onSubmit={handleRegistration} />) : (<Navigate to="/" />)} />
+          <Route path='/signin' element={!loggedIn ? (<Login onSubmit={handleLogin} />) : (<Navigate to="/" />)} />
           <Route element={<ProtectedRoute loggedIn={loggedIn} />} >
             <Route path='/movies' element={
               <>

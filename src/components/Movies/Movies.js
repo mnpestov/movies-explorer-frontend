@@ -32,6 +32,7 @@ function Movies() {
     function checkSaved(movies) {
         MainApi.getMovies()
             .then((savedMovies) => {
+                localStorage.setItem('SavedMovies', JSON.stringify(savedMovies));
                 const moviesOnRender = movies.map((item) => {
                     const movie = savedMovies.find(({ movieId, _id }) => movieId === item.movieId);
                     if (movie) {
@@ -64,19 +65,21 @@ function Movies() {
         setParams(params); //поисковой запрос
         setMoviesList(null); //обнуляем список фильмов
 
-        let movies
-        try {
-            movies = await MoviesApi.getMovies();  //делаем запрос фильмов с сервера
-        } catch (err) {
-            console.log('Ошибка', err)
-            setIsLoading(false);
+        const allMovies = localStorage.getItem('allMovies');
+        let movies = JSON.parse(allMovies);
+        if (!movies) {
+            try {
+                movies = await MoviesApi.getMovies();  //делаем запрос фильмов с сервера
+                localStorage.setItem('allMovies', JSON.stringify(movies));
+            } catch (err) {
+                console.log('Ошибка', err)
+                setIsLoading(false);
+            }
         }
 
         let filteredMovies = movies.filter(({ nameRU, nameEN }) => { //фильтруем полученные фильмы по названию
-
             if (findInName(nameRU, request)) return true;
             else if (findInName(nameEN, request)) return true;
-
             return false;
         });
 
@@ -101,7 +104,14 @@ function Movies() {
         MainApi.addMovie({ country, director, duration, year, description, image, trailerLink, movieId, nameRU, nameEN, thumbnail })
             .then((movie) => {
                 if (movie) {
-                    checkSaved(moviesList, params)
+                    const moviesOnRender = moviesList.map((item) => {
+                        if (item.movieId === movie.movieId) {
+                            item.isSaved = true;
+                            item.savedId = movie._id;
+                        }
+                        return item;
+                    })
+                    setMoviesList(moviesOnRender);
                 }
             })
             .catch((err) => console.log('Ошибка', err))
@@ -110,7 +120,17 @@ function Movies() {
         MainApi.deleteMovie(id)
             .then((movie) => {
                 if (movie) {
-                    checkSaved(moviesList, params)
+                    const moviesOnRender = moviesList.map((item) => {
+                        if (item.movieId === movie.movieId) {
+                            item.isSaved = false;
+                            delete item.savedId;
+                        }
+                        return item;
+                    })
+                    console.log(moviesList);
+                    console.log(moviesOnRender);
+                    setMoviesList(moviesOnRender);
+                    // checkSaved(moviesList, params)
                 }
             })
             .catch((err) => console.log('Ошибка', err))
@@ -127,8 +147,9 @@ function Movies() {
             saveSearchHistory(searchHistory, params);
             checkSaved(filteredMovies);
         } else {
-            saveSearchHistory(searchHistory, params);
-            checkSaved(searchHistory);
+            // saveSearchHistory(searchHistory, params);
+            saveSearchHistory(cards, params);
+            checkSaved(cards);
         }
         setIsLoading(false)
     }
