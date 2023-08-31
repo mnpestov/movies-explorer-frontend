@@ -27,6 +27,7 @@ function App() {
   const cbAuthenticate = useCallback((data) => {
     localStorage.setItem('jwt', data.token);
     setLoggedIn(true);
+    localStorage.setItem('isAuth', true);
   }, [])
 
   const checkToken = useCallback(async () => {
@@ -40,7 +41,7 @@ function App() {
         throw new Error('invalid user')
       } else {
         setLoggedIn(true);
-        localStorage.setItem('isAuth', loggedIn);
+        localStorage.setItem('isAuth', true);
       }
     } catch (err) {
       console.log('Ошибка: ' + err)
