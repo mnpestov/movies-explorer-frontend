@@ -11,13 +11,11 @@ function Movies() {
     const [moviesList, setMoviesList] = useState(null); //список фильмов на рендер
     const [searchHistory, setSearchHistory] = useState(null); //список фильмов с сервера
     const [isLoading, setIsLoading] = useState(false); // прелоудер
-    const [params, setParams] = useState(null); //последний поисковой запрос
 
     useEffect(() => {
         const SearchHistory = localStorage.getItem('SearchHistory'); //проверяем есть ли история поиска
         if (SearchHistory) {
             const savedSearch = JSON.parse(SearchHistory)
-            setParams(savedSearch.params); //если есть записываем в переменную последний поисковой запрос
             setSearchHistory(savedSearch.movies); // и последний результат поиска 
             changeIsShort(savedSearch.params, savedSearch.movies);
         }
@@ -62,7 +60,6 @@ function Movies() {
         const { request, isShort } = params;
 
         setIsLoading(true); //прелоудер
-        setParams(params); //поисковой запрос
         setMoviesList(null); //обнуляем список фильмов
 
         const allMovies = localStorage.getItem('allMovies');
@@ -130,7 +127,6 @@ function Movies() {
                     console.log(moviesList);
                     console.log(moviesOnRender);
                     setMoviesList(moviesOnRender);
-                    // checkSaved(moviesList, params)
                 }
             })
             .catch((err) => console.log('Ошибка', err))
@@ -147,7 +143,6 @@ function Movies() {
             saveSearchHistory(searchHistory, params);
             checkSaved(filteredMovies);
         } else {
-            // saveSearchHistory(searchHistory, params);
             saveSearchHistory(cards, params);
             checkSaved(cards);
         }
@@ -156,7 +151,7 @@ function Movies() {
 
     return (
         <>
-            <SearchForm onSubmit={handleSearch} onChecked={changeIsShort} cards={searchHistory} />
+            <SearchForm onSubmit={handleSearch} onChecked={handleSearch} cards={searchHistory} />
             {isLoading ? (<Preloader />) : null}
             {moviesList && !isLoading ? (<MoviesCardList cards={moviesList} onDelete={deleteMovie} onSave={saveMovie} />) : null}
             <Footer />
