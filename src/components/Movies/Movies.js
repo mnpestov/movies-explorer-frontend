@@ -9,7 +9,7 @@ import { MainApi } from '../../utils/MainApi';
 
 function Movies() {
     const [moviesList, setMoviesList] = useState(null); //список фильмов на рендер
-    const [movies, setMovies] = useState(null); //список фильмов с сервера
+    const [searchHistory, setSearchHistory] = useState(null); //список фильмов с сервера
     const [isLoading, setIsLoading] = useState(false); // прелоудер
     const [params, setParams] = useState(null); //последний поисковой запрос
 
@@ -18,14 +18,15 @@ function Movies() {
         if (SearchHistory) {
             const savedSearch = JSON.parse(SearchHistory)
             setParams(savedSearch.params); //если есть записываем в переменную последний поисковой запрос
-            setMovies(savedSearch.movies); // и последний результат поиска 
+            setSearchHistory(savedSearch.movies); // и последний результат поиска 
             changeIsShort(savedSearch.params, savedSearch.movies);
         }
-    },[])
+    }, [])
 
     function saveSearchHistory(movies, params) { // сохраняем в локал сторедж последний результат поиска и поисковой запрос
         localStorage.removeItem('SearchHistory')
         localStorage.setItem('SearchHistory', JSON.stringify({ movies, params }));
+        setSearchHistory(movies);
     }
 
     function checkSaved(movies) {
@@ -91,6 +92,7 @@ function Movies() {
             return { country, director, duration, year, description, image, trailerLink, movieId, nameRU, nameEN, thumbnail };
         })
         saveSearchHistory(moviesOnRender, params);
+        setSearchHistory(moviesOnRender);
         checkSaved(moviesOnRender, params);
         setIsLoading(false)
     }
@@ -114,25 +116,26 @@ function Movies() {
             .catch((err) => console.log('Ошибка', err))
     }
 
-    function changeIsShort(params, movies) {
+    function changeIsShort(params, cards) {
         setIsLoading(true)
         setMoviesList(null);
-        if (movies) {
-
-            const { isShort = false } = params;
-            const filteredMovies = movies.filter(({ duration }) => {
-                if (isShort && duration > 40) return false;
+        if (cards && params.isShort) {
+            const filteredMovies = cards.filter(({ duration }) => {
+                if (duration > 40) return false;
                 return true;
             });
-            saveSearchHistory(movies, params);
+            saveSearchHistory(searchHistory, params);
             checkSaved(filteredMovies);
+        } else {
+            saveSearchHistory(searchHistory, params);
+            checkSaved(searchHistory);
         }
         setIsLoading(false)
     }
 
     return (
         <>
-            <SearchForm onSubmit={handleSearch} onChecked={changeIsShort} />
+            <SearchForm onSubmit={handleSearch} onChecked={changeIsShort} cards={searchHistory} />
             {isLoading ? (<Preloader />) : null}
             {moviesList && !isLoading ? (<MoviesCardList cards={moviesList} onDelete={deleteMovie} onSave={saveMovie} />) : null}
             <Footer />

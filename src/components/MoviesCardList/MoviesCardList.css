@@ -48,6 +48,10 @@
     cursor: pointer;
 }
 
+.movies-list__saved-movies-btn {
+    visibility: hidden;
+}
+
 @media (max-width: 936px) {
     .movies-list {
         padding: 81px 30px 9px;

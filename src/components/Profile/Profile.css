@@ -28,6 +28,18 @@
   padding-top: 70px;
 }
 
+.profile__submitResult {
+  margin: 0;
+  margin-top: 7px;
+  min-height: 12px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #3DDC84;
+  justify-self: center;
+}
+
 .profile__btns {
   display: flex;
   flex-direction: column;

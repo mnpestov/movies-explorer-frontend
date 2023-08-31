@@ -10,6 +10,7 @@ function Profile({ logOut, onSubmit }) {
 
   const currentUser = useContext(CurrentUserContext);
   const [user, setUser] = useState({});
+  const [submitResult, setSubmitResult] = useState('');
 
   useEffect(() => {
     setUser(currentUser);
@@ -17,11 +18,13 @@ function Profile({ logOut, onSubmit }) {
 
   function handleChange(e) {
     const { target: { name, value } } = e;
+    setSubmitResult('');
     setUser({ ...user, [name]: value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    setSubmitResult('Сохранено');
     onSubmit(user);
   }
 
@@ -40,6 +43,7 @@ function Profile({ logOut, onSubmit }) {
           {/* <p className="profile__info">{user.email}</p> */}
         </div>
       </div>
+      <span className="profile__submitResult">{submitResult}</span>
       <div className="profile__btns">
         <button type="submit" className="profile__btn" onClick={handleSubmit} disabled={!(user.name !== currentUser.name || user.email !== currentUser.email)}>Редактировать</button>
         <button type="button" className="profile__btn profile__btn_color_red" onClick={logOut}>Выйти из аккаунта</button>

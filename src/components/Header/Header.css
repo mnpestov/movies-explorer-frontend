@@ -60,7 +60,7 @@
     }
 }
 
-@media (max-width: 1075px) {
+@media (max-width: 936px) {
     .header__container {
         padding: 18px 30px;
     }

@@ -140,5 +140,6 @@
     .card__save {
         top: 10px;
         right: 13px;
+        visibility: visible;
     }
 }
